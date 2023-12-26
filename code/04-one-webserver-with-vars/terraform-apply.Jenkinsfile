@@ -22,27 +22,19 @@ pipeline {
                 """
             }
         }
-        stage('Terraform format') {
-            steps {
-                sh """
-                    cd code/04-one-webserver-with-vars
-                    terraform fmt -list=true -write=false -diff=true -check=true
-                """
-            }
-        }
-         stage('Terraform validate') {
-            steps {
-                sh """
-                    cd code/04-one-webserver-with-vars
-                    terraform validate
-                """
-            }
-        }
         stage('Terraform plan') {
             steps {
                 sh """
                     cd code/04-one-webserver-with-vars
                     terraform plan -var 'server_port=8080'
+                """
+            }
+        }
+        stage('Terraform apply') {
+            steps {
+                sh """
+                    cd code/04-one-webserver-with-vars
+                    terraform apply -auto-approve -var 'server_port=8080'
                 """
             }
         }
