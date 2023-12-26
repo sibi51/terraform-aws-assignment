@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Git Clone') {
             steps {
-                cleanWS()
+                cleanWs()
                 git credentialsId: 'github-token', url: "https://github.com/sibi51/terraform-aws-assignment.git", branch: 'jenkins-ci'
                 sh "git clone https://github.com/sibi51/terraform-aws-assignment.git"
             }
