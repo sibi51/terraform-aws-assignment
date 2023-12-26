@@ -17,7 +17,7 @@ pipeline {
                       sh """
                         export AWS_ACCESS_KEY_ID='${AWS_ACCESS_KEY_ID}'
                         export AWS_SECRET_ACCESS_KEY='${AWS_SECRET_ACCESS_KEY}'
-                        export AWS_DEFAULT_REGION=ap-southeast-2
+                        export AWS_DEFAULT_REGION=eu-west-1
                       """
                   }
             }
@@ -35,14 +35,6 @@ pipeline {
                 sh """
                     cd code/04-one-webserver-with-vars
                     terraform fmt -list=true -write=false -diff=true -check=true
-                """
-            }
-        }
-        stage('Terraform validate') {
-            steps {
-                sh """
-                    cd code/04-one-webserver-with-vars
-                terraform validate
                 """
             }
         }

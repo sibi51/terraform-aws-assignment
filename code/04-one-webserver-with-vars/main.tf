@@ -1,6 +1,6 @@
 # Configure the AWS provider
 provider "aws" {
-  region = "ap-southeast-2"
+  region = "eu-west-1"
 }
 
 # Create a Security Group for an EC2 instance 
