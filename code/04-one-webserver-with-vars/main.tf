@@ -1,11 +1,11 @@
 # Configure the AWS provider
 provider "aws" {
-  region = "eu-west-1"
+  region = "ap-southeast-2"
 }
 
 # Create a Security Group for an EC2 instance 
 resource "aws_security_group" "instance" {
-  name = "terraform-example-instance"
+  name = "terraform-assignment-instance"
 
   ingress {
     from_port   = var.server_port
@@ -23,11 +23,11 @@ resource "aws_instance" "example" {
 
   user_data = <<-EOF
 	      #!/bin/bash
-	      echo "Hello, World" > index.html
+	      echo "Hello, Team!! This is Terraform/AWS assignment." > index.html
 	      nohup busybox httpd -f -p "${var.server_port}" &
 	      EOF
 
-  tags {
-    Name = "terraform-example"
+  tags = {
+    Name = "terraform-assignment"
   }
 }
