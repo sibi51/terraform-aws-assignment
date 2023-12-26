@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Git Clone') {
             steps {
+                cleanWS()
                 git credentialsId: 'github-token', url: "https://github.com/sibi51/terraform-aws-assignment.git", branch: 'jenkins-ci'
                 sh "git clone https://github.com/sibi51/terraform-aws-assignment.git"
             }
         }
         stage('AWS Authentication') {
             steps {
-               cleanWS()
                withCredentials([
                   string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'),
                   string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')
