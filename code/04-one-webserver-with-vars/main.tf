@@ -1,12 +1,12 @@
 # Configure the AWS provider
 provider "aws" {
-  region = "eu-west-1"
+  region = "eu-west-2"
 }
 
 # Create a Security Group for an EC2 instance 
 resource "aws_security_group" "instance" {
   name   = "terraform-assignment-instance"
-  vpc_id = "vpc-0218a51eed07bbf3b"
+  vpc_id = "vpc-03f8261b06eefceed"
 
   ingress {
     from_port   = var.server_port
